@@ -1,3 +1,13 @@
-#index:
+# index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+# test:
+#    path: /test
+#    controller: App\Controller\DefaultController::test
+
+# profile:
+#    path: /profile/{prenom}
+#    controller: App\Controller\DefaultController::profile
+#    defaults:
+#       prenom: raph
