@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	<title>{{"Accueil"}}</title>
+{% endblock %}
+
+{% block body %}
+	{% apply inline_css(source("styles/accueil.css"),source("styles/global.css")) %}
+	<div>
+		<h1 class="title">Accueil</h1>
+	</div>
+	{% endapply %}
+{% endblock %}

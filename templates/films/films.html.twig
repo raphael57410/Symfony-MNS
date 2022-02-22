@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	<title>{{"Films"}}</title>
+{% endblock %}
+
+{% block body %}
+	{% apply inline_css(source("styles/films.css"), source("styles/global.css")) %}
+	<div class="film_container">
+		<h1 class="title">page des Films</h1>
+		{% if films|length == 0 %}
+			Pas de film disponnible
+		{% endif %}
+
+		<ul class="film_ul">
+			{% for film in films %}
+				<li class="film_li">{{ film }}</li>
+			{% endfor %}
+		</ul>
+	</div>
+	{% endapply %}
+{% endblock %}

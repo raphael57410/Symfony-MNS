@@ -1,0 +1,31 @@
+Arguments: 
+  /home/raph/.nvm/versions/node/v16.14.0/bin/node /home/raph/.nvm/versions/node/v16.14.0/bin/yarn encore dev-server
+
+PATH: 
+  /home/raph/.nvm/versions/node/v16.14.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/iCLS/:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/iCLS/:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/IPT:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/IPT:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/d/Git/cmd:/mnt/d/Git/mingw64/bin:/mnt/d/Git/usr/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Users/demme/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/demme/Desktop/Microsoft VS Code/bin:/mnt/c/Users/demme/OneDrive/Documents/logiciel de scan/Nmap:/mnt/c/Users/demme/AppData/Local/GitHubDesktop/bin:/mnt/c/Users/demme/AppData/Local/Microsoft/WindowsApps
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  16.14.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/raph/projets/symfony-mns-project/package.json: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at /home/raph/.nvm/versions/node/v16.14.0/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/home/raph/.nvm/versions/node/v16.14.0/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /home/raph/.nvm/versions/node/v16.14.0/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

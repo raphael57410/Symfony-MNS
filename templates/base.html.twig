@@ -1,14 +1,11 @@
 <!DOCTYPE html>
+{% apply inline_css(source("styles/index.css")) %}
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-		<title>
-			{% block title %}Welcome!
-			{% endblock %}
-		</title>
+		<meta
+		charset="UTF-8">
 		{# Run `composer require symfony/webpack-encore-bundle`
-																				           and uncomment the following Encore helpers to start using Symfony UX #}
+																																												           and uncomment the following Encore helpers to start using Symfony UX #}
 		{% block stylesheets %}
 			{#{{ encore_entry_link_tags('app') }}#}
 		{% endblock %}
@@ -18,6 +15,8 @@
 		{% endblock %}
 	</head>
 	<body>
+		{% include "navBar/navBar.html.twig" %}
 		{% block body %}{% endblock %}
 	</body>
 </html>
+{% endapply %}
