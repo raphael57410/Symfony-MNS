@@ -13,4 +13,4 @@ import './styles/index.css';
 import './styles/navBar.css';
 
 // start the Stimulus application
-import './bootstrap';
+// import './bootstrap';

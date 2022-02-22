@@ -1,11 +1,10 @@
 {
-  "scripts": {
-    "encore": "dev --watch"
-  },
   "devDependencies": {
-    "webpack-cli": "^4.9.2"
+    "@symfony/webpack-encore": "^1.8.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-notifier": "^1.6.0"
   },
   "dependencies": {
-    "encore": "^0.0.30-beta"
+    "webpack-encore-bundle": "symfony/webpack-encore-bundle"
   }
 }
