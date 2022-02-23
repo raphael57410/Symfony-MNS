@@ -23,11 +23,50 @@ class FormController extends AbstractController
         !$entityManager = $doctrine->getManager();
         $isEditor = false;
 
+        //### condition quand on change les valeur d'un film ###
+        if (isset($id) && !empty($_POST)) {
+            //### on recupere le film avec l'id en BDD
+            $film = $entityManager->getRepository(Films::class)->find($id);
+            //on recupere les données rentré dans les inputs
+            $newTitle = $_POST['form']['title'];
+            $newDirector = $_POST['form']['director'];
+            $newGender = $_POST['form']['gender'];
+
+            $film->setTitle($newTitle);
+            $film->setDirector($newDirector);
+            $film->setGender($newGender);
+
+            $entityManager->persist($film);
+            $entityManager->flush();
+        }
+
+
         if (isset($id)) {
+
+            // on recupere le film avec son id
             $film = $entityManager->getRepository(Films::class)->find($id);
             $isEditor = true;
+
             if (!isset($film)) {
                 return $this->redirectToRoute("read_film");
+            }
+
+            //### condition quand on change les valeur d'un film ###
+            if (!empty($_POST)) {
+
+                //on recupere les données rentré dans les inputs
+                $newTitle = $_POST['form']['title'];
+                $newDirector = $_POST['form']['director'];
+                $newGender = $_POST['form']['gender'];
+
+                // on change les valeurs avec les setters
+                $film->setTitle($newTitle);
+                $film->setDirector($newDirector);
+                $film->setGender($newGender);
+
+                // on prepare et ajoute en BDD les changements
+                $entityManager->persist($film);
+                $entityManager->flush();
             }
         } else {
             // on crée une nouvelle instance de films
