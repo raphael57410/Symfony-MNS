@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	<title>{{film.title}}</title>
+{% endblock %}
+
+{% block body %}
+	{% apply inline_css(source("styles/form.css"), source("styles/global.css")) %}
+	<h1>Description du film</h1>
+
+	<div>{{ film.title }}</div>
+	<div>{{ film.gender }}</div>
+	<div>{{ film.director }}</div>
+	{% endapply %}
+{% endblock %}

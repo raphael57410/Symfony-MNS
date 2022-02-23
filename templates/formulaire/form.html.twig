@@ -7,8 +7,26 @@
 {% block body %}
 	{% apply inline_css(source("styles/form.css"), source("styles/global.css")) %}
 	<div class="form_container">
-		<h1 class="form_title">Ajouter un film</h1>
-		{{form(form)}}
-		</div>
-		{% endapply %}
-	{% endblock %}
+		{% if isEditor %}
+			<h1 class="form_title">Changer un film</h1>
+		{% else %}
+			<h1 class="form_title">Ajouter un film</h1>
+		{% endif %}
+		{{form_start(form)}}
+
+		{{form_row(form.title, {'label': 'Titre'})}}
+
+		{{form_row(form.director,{'label': 'Réalisateur'})}}
+
+		{{form_row(form.gender,{'label': 'Genre'})}}
+
+		{% if isEditor %}
+			{{form_row(form.save,{'label': 'Changer'})}}
+		{% else %}
+			{{form_row(form.save,{'label': 'Ajouter'})}}
+		{% endif %}
+
+		{{form_end(form)}}
+	</div>
+	{% endapply %}
+{% endblock %}

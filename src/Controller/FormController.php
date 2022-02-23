@@ -15,19 +15,32 @@ class FormController extends AbstractController
 
     /**
      * @Route("/formulaire", name="formulaire")
+     * @Route("updateFilm/{id}", name="update_film")
+     * 
      */
-    function formulaire(ManagerRegistry $doctrine, Request $request)
+    function formulaire(ManagerRegistry $doctrine, Request $request, $id = null)
     {
+        !$entityManager = $doctrine->getManager();
+        $isEditor = false;
 
-        // on crée une nouvelle instance de films
-        $film = new Films;
+        if (isset($id)) {
+            $film = $entityManager->getRepository(Films::class)->find($id);
+            $isEditor = true;
+            if (!isset($film)) {
+                return $this->redirectToRoute("read_film");
+            }
+        } else {
+            // on crée une nouvelle instance de films
+            $film = new Films;
+        }
+
 
         // on envoie a la vu le formulaire
         $form = $this->createFormBuilder($film)
             ->add("title", TextType::class)
             ->add("director", TextType::class)
             ->add("gender", TextType::class)
-            ->add("save", SubmitType::class, ["label" => "Ajouter un film"])
+            ->add("save", SubmitType::class)
             ->getForm();
 
         // on recupere le formulaire et si il a etait submit et si 
@@ -36,8 +49,6 @@ class FormController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $films = $form->getData();
-
-            !$entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($films);
             $entityManager->flush();
 
@@ -47,6 +58,7 @@ class FormController extends AbstractController
 
         return $this->render('formulaire/form.html.twig', [
             'form' => $form->createView(),
+            'isEditor' => $isEditor,
         ]);
     }
 }

@@ -4,12 +4,15 @@ namespace App\Controller;
 
 use App\Entity\Films;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 
 class FilmsController extends AbstractController
 {
@@ -42,32 +45,70 @@ class FilmsController extends AbstractController
      */
     public function readFilm(ManagerRegistry $doctrine): Response
     {
+        $genre = [];
+
 
         // on récupére tout les films de la base de données
         $allFilms = $doctrine->getManager()->getRepository(Films::class)->findAll();
+
+        foreach ($allFilms as $film) {
+            if (!in_array($film->getGender(), $genre)) {
+                array_push($genre, $film->getGender());
+            }
+        }
+
 
         // on envoie la vue les données de notre base
         return $this->render(
             'films/films.html.twig',
             [
                 "films" => $allFilms,
+                "genres" => $genre,
             ]
         );
     }
 
     /**
-     * @Route("/updateFilm", name="update_film")
+     * @Route("/deleteFilm/{id}", name="delete_film")
      */
-    public function updateFilm(ManagerRegistry $doctrine): Response
+    public function deleteFilm(Films $film = null, ManagerRegistry $doctrine, $id): Response
     {
-        // on update un film
+
+        $entityManager = $doctrine->getManager();
+        $film = $entityManager->getRepository(Films::class)->find($id);
+
+        // on vérifie si un film existe
+        if ($film == null) {
+            throw $this->createNotFoundException('film non trouvé.');
+        }
+
+        // on le supprime et on flush pour la BDD
+        $entityManager->remove($film);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('read_film');
     }
 
     /**
-     * @Route("/deleteFilm", name="delete_film")
+     * @Route("/oneFilm/{id}", name="one_film")
      */
-    public function deleteFilm(ManagerRegistry $doctrine): Response
+    public function sortFilms(Films $film = null, ManagerRegistry $doctrine, $id): Response
     {
-        // on delete un film
+        $entityManager = $doctrine->getManager();
+        $film = $entityManager->getRepository(Films::class)->find($id);
+
+        return $this->render(
+            'films/oneFilm.html.twig',
+            [
+                "film" => $film,
+            ]
+        );
     }
+
+    // /**
+    //  * @Route("/sortFilms", name="delete_film")
+    //  */
+    // public function sortFilms(): Response
+    // {
+    // }
 }

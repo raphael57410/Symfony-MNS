@@ -21,7 +21,7 @@ justify-content: center;
     height: 50%;
     width: 55%;
     padding: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin: 10px;
 }
 
 .film_li {
@@ -30,34 +30,73 @@ justify-content: center;
     display: flex;
     align-items: center;
     color: blue;
-    border: 1px solid red;
     border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 5px;
     width: 100%;
 }
 
-.Horreur {
-    width: 20%;
+.film_title {
+    margin: 10px;
+}
+
+.film_title a {
+    margin: 10px;
+    color: #1A2980;
+}
+
+.button_container{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.button {
+    border-radius: 5px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.delete {
+    border-radius: 5px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    color: black;
+    background: white;
+    border: 1px solid red;
+}
+
+.delete > a {
+    color: black;
+}
+
+.update {
+    background: #795805;
+}
+
+.film_gender {
+    width: 100%;
     color: white;
     border-radius: 15px;
+}
+
+.film_gender.Horreur {
     background: lightcoral;
 }
 
-.Action {
-    width: 20%;
-    color: white;
-    border-radius: 15px;
+.film_gender.Action {
     background: lightblue;
 }
 
-.Comédie {
-    width: 20%;
-    color: white;
-    border-radius: 15px;
+.film_gender.Comédie {
     background: lightgreen;
 }
 
 .create_button {
     width: 200px;
+    height: 30px;
     margin: 5px;
     color: white;
     border-radius: 15px;

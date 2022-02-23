@@ -12,11 +12,14 @@
 			<form action="" method="POST">
 				<select type="submit" name="gender" id="gender_Select">
 					<option value="">Genre des films</option>
-					{% for film in films %}
-						<option value={{film.gender}}>{{ film.gender }}</option>
+					{% for genre in genres %}
+
+						<option value={{ genre }}>{{ genre }}</option>
 					{% endfor %}
 				</select>
-				<button>rechercher</button>
+				<button>
+					<a href="sortFilms">rechercher</a>
+				</button>
 			</form>
 		</div>
 		{% if films|length == 0 %}
@@ -26,11 +29,24 @@
 		<ul class="film_ul">
 			{% for film in films %}
 				<li class="film_li">
-					<h2>{{ film.title }}</h2>
+					<div class='film_gender {{film.gender}}'>Genre :{{ film.gender }}</div>
+					<h2 class="film_title">
+						<a href="oneFilm/{{film.id}}">{{ film.title }}</a>
+					</h2>
 
-					<div class={{film.gender}}>{{ film.gender }}</div>
 
 					<div>{{ film.director }}</div>
+					<div class="button_container">
+						<button class="button delete">
+							<a href="deleteFilm/{{film.id}}">Supprimer</a>
+						</button>
+						<button class="button update">
+							<a href="updateFilm/{{film.id}}">update</a>
+						</button>
+						<button class="button oneFilm">
+							<a href="oneFilm/{{film.id}}">Voir</a>
+						</button>
+					</div>
 				</li>
 			{% endfor %}
 		</ul>
