@@ -7,7 +7,18 @@
 {% block body %}
 	{% apply inline_css(source("styles/films.css"), source("styles/global.css")) %}
 	<div class="film_container">
-		<h1 class="title">page des Films</h1>
+		<div class="title_container">
+			<h1 class="title">page des Films</h1>
+			<form action="" method="POST">
+				<select type="submit" name="gender" id="gender_Select">
+					<option value="">Genre des films</option>
+					{% for film in films %}
+						<option value={{film.gender}}>{{ film.gender }}</option>
+					{% endfor %}
+				</select>
+				<button>rechercher</button>
+			</form>
+		</div>
 		{% if films|length == 0 %}
 			Pas de film disponnible
 		{% endif %}
@@ -24,7 +35,7 @@
 			{% endfor %}
 		</ul>
 		<button class="create_button">
-			<a href="">Ajouter un film</a>
+			<a href="formulaire">Ajouter un film</a>
 		</button>
 	</div>
 	{% endapply %}

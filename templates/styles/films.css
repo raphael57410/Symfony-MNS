@@ -5,6 +5,13 @@
     align-items: center;
     flex-wrap: wrap;
 }
+
+.title_container{
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
 .film_ul{
     display: flex;
     display: grid;
@@ -24,6 +31,7 @@
     align-items: center;
     color: blue;
     border: 1px solid red;
+    border-radius: 10px;
     width: 100%;
 }
 
@@ -39,6 +47,13 @@
     color: white;
     border-radius: 15px;
     background: lightblue;
+}
+
+.Comédie {
+    width: 20%;
+    color: white;
+    border-radius: 15px;
+    background: lightgreen;
 }
 
 .create_button {
