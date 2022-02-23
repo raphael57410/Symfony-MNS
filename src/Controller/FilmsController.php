@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class FilmsController extends AbstractController
 {
     /**
-     * @Route("/createFilm", name="create_films")
+     * @Route("/createFilm", name="create_film")
      */
     public function createFilm(ManagerRegistry $doctrine): Response
     {
@@ -35,7 +35,7 @@ class FilmsController extends AbstractController
     }
 
     /**
-     * @Route("/readFilm", name="create_films")
+     * @Route("/readFilm", name="read_film")
      */
     public function readFilm(ManagerRegistry $doctrine): Response
     {
@@ -53,7 +53,7 @@ class FilmsController extends AbstractController
     }
 
     /**
-     * @Route("/updateFilm", name="update_films")
+     * @Route("/updateFilm", name="update_film")
      */
     public function updateFilm(ManagerRegistry $doctrine): Response
     {
@@ -61,7 +61,7 @@ class FilmsController extends AbstractController
     }
 
     /**
-     * @Route("/deleteFilm", name="update_films")
+     * @Route("/deleteFilm", name="delete_film")
      */
     public function deleteFilm(ManagerRegistry $doctrine): Response
     {

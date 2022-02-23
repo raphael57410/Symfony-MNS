@@ -14,9 +14,18 @@
 
 		<ul class="film_ul">
 			{% for film in films %}
-				<li class="film_li">{{ film.title }}</li>
+				<li class="film_li">
+					<h2>{{ film.title }}</h2>
+
+					<div class={{film.gender}}>{{ film.gender }}</div>
+
+					<div>{{ film.director }}</div>
+				</li>
 			{% endfor %}
 		</ul>
+		<button class="create_button">
+			<a href="">Ajouter un film</a>
+		</button>
 	</div>
 	{% endapply %}
 {% endblock %}
