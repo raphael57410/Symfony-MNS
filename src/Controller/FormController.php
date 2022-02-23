@@ -23,23 +23,6 @@ class FormController extends AbstractController
         !$entityManager = $doctrine->getManager();
         $isEditor = false;
 
-        //### condition quand on change les valeur d'un film ###
-        if (isset($id) && !empty($_POST)) {
-            //### on recupere le film avec l'id en BDD
-            $film = $entityManager->getRepository(Films::class)->find($id);
-            //on recupere les données rentré dans les inputs
-            $newTitle = $_POST['form']['title'];
-            $newDirector = $_POST['form']['director'];
-            $newGender = $_POST['form']['gender'];
-
-            $film->setTitle($newTitle);
-            $film->setDirector($newDirector);
-            $film->setGender($newGender);
-
-            $entityManager->persist($film);
-            $entityManager->flush();
-        }
-
 
         if (isset($id)) {
 
@@ -79,7 +62,11 @@ class FormController extends AbstractController
             ->add("title", TextType::class)
             ->add("director", TextType::class)
             ->add("gender", TextType::class)
-            ->add("save", SubmitType::class)
+            ->add(
+                "save",
+                SubmitType::class,
+                ['attr' => ['onclick' => 'return confirm("valider ?")']]
+            )
             ->getForm();
 
         // on recupere le formulaire et si il a etait submit et si 

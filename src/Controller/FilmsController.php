@@ -42,20 +42,41 @@ class FilmsController extends AbstractController
 
     /**
      * @Route("/readFilm", name="read_film")
+     * @Route("/sortFilms", name="sort_films")
      */
     public function readFilm(ManagerRegistry $doctrine): Response
     {
         $genre = [];
+        $sortFilms = [];
+        $filmNumber = 0;
+
 
 
         // on récupére tout les films de la base de données
         $allFilms = $doctrine->getManager()->getRepository(Films::class)->findAll();
+
+        // Condition pour trier les films par genre
+        if (!empty($_POST)) {
+            foreach ($allFilms as $film) {
+                if ($film->getGender() == $_POST['gender']) {
+                    array_push($sortFilms, $film);
+                }
+            }
+
+            // Si le tableau n'est pas vide on change valeur de 
+            // tous les films avec la nouvelle valeur des films trié
+            if (!empty($sortFilms)) {
+                $allFilms = $sortFilms;
+            }
+        }
 
         foreach ($allFilms as $film) {
             if (!in_array($film->getGender(), $genre)) {
                 array_push($genre, $film->getGender());
             }
         }
+
+        $filmNumber = count($allFilms);
 
 
         // on envoie la vue les données de notre base
@@ -64,6 +85,7 @@ class FilmsController extends AbstractController
             [
                 "films" => $allFilms,
                 "genres" => $genre,
+                "filmNumber" => $filmNumber,
             ]
         );
     }
@@ -92,7 +114,7 @@ class FilmsController extends AbstractController
     /**
      * @Route("/oneFilm/{id}", name="one_film")
      */
-    public function sortFilms(Films $film = null, ManagerRegistry $doctrine, $id): Response
+    public function oneFilm(Films $film = null, ManagerRegistry $doctrine, $id): Response
     {
         $entityManager = $doctrine->getManager();
         $film = $entityManager->getRepository(Films::class)->find($id);
@@ -104,11 +126,4 @@ class FilmsController extends AbstractController
             ]
         );
     }
-
-    // /**
-    //  * @Route("/sortFilms", name="delete_film")
-    //  */
-    // public function sortFilms(): Response
-    // {
-    // }
 }

@@ -8,8 +8,10 @@
 	{% apply inline_css(source("styles/films.css"), source("styles/global.css")) %}
 	<div class="film_container">
 		<div class="title_container">
-			<h1 class="title">page des Films</h1>
-			<form action="" method="POST">
+			<h1 class="title">Il y'a
+				{{ filmNumber }}
+				films de disponible</h1>
+			<form action="" method="post" class="film_select">
 				<select type="submit" name="gender" id="gender_Select">
 					<option value="">Genre des films</option>
 					{% for genre in genres %}
@@ -17,9 +19,9 @@
 						<option value={{ genre }}>{{ genre }}</option>
 					{% endfor %}
 				</select>
-				<button>
+				<input type="submit">
 					<a href="sortFilms">rechercher</a>
-				</button>
+				</input>
 			</form>
 		</div>
 		{% if films|length == 0 %}
@@ -29,7 +31,8 @@
 		<ul class="film_ul">
 			{% for film in films %}
 				<li class="film_li">
-					<div class='film_gender {{film.gender}}'>Genre :{{ film.gender }}</div>
+					<div class='film_gender {{film.gender}}'>Théme:
+						{{ film.gender }}</div>
 					<h2 class="film_title">
 						<a href="oneFilm/{{film.id}}">{{ film.title }}</a>
 					</h2>
@@ -44,7 +47,7 @@
 							<a href="updateFilm/{{film.id}}">update</a>
 						</button>
 						<button class="button oneFilm">
-							<a href="oneFilm/{{film.id}}">Voir</a>
+							<a href="oneFilm/{{film.id}}">Description</a>
 						</button>
 					</div>
 				</li>

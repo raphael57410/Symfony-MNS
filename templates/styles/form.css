@@ -1,10 +1,42 @@
 .form_container {
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
+.form_container > form {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+}
+
 .form_title {
 
+}
+
+.form_container input {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #1A2980;
+}
+
+.form_button{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.form_button > div >button {
+    width: 200px;
+    height: 30px;
+    margin: 5px;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    background: #1A2980;
+    background: -webkit-linear-gradient(to right, #26D0CE, #1A2980);
+    background: linear-gradient(to right, #26D0CE, #1A2980);
 }

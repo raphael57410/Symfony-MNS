@@ -21,9 +21,13 @@
 		{{form_row(form.gender,{'label': 'Genre'})}}
 
 		{% if isEditor %}
-			{{form_row(form.save,{'label': 'Changer'})}}
+			<div class="form_button">
+				{{form_row(form.save,{'label': 'Changer'})}}
+			</div>
 		{% else %}
-			{{form_row(form.save,{'label': 'Ajouter'})}}
+			<div class="form_button">
+				{{form_row(form.save,{'label': 'Ajouter'})}}
+			</div>
 		{% endif %}
 
 		{{form_end(form)}}

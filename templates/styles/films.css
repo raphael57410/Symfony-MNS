@@ -45,6 +45,11 @@ justify-content: center;
     color: #1A2980;
 }
 
+.film_select{
+    display: flex;
+    justify-content: center;
+}
+
 .button_container{
     display: flex;
     justify-content: space-around;
@@ -73,6 +78,10 @@ justify-content: center;
 }
 
 .update {
+    background: #795805;
+}
+
+.oneFilm {
     background: #795805;
 }
 
