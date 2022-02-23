@@ -46,8 +46,16 @@ class FilmsController extends AbstractController
      */
     public function readFilm(ManagerRegistry $doctrine): Response
     {
+        // tableau des genres 
         $genre = [];
+
+        // tableau des films trié
         $sortFilms = [];
+
+        // Variable qui nous sert a savoir si il y'a eu un trie des films
+        $sort = false;
+
+        // Nombre de film
         $filmNumber = 0;
 
 
@@ -60,6 +68,7 @@ class FilmsController extends AbstractController
             foreach ($allFilms as $film) {
                 if ($film->getGender() == $_POST['gender']) {
                     array_push($sortFilms, $film);
+                    $sort = true;
                 }
             }
 
@@ -86,6 +95,7 @@ class FilmsController extends AbstractController
                 "films" => $allFilms,
                 "genres" => $genre,
                 "filmNumber" => $filmNumber,
+                "sort" => $sort
             ]
         );
     }
