@@ -37,6 +37,7 @@ class SeanceController extends AbstractController
         $form = $this->createForm(SeanceType::class, $seance);
         $form->handleRequest($request);
 
+
         $seance->setUpdatedAt(new DateTime("now"));
         $seance->setCreatedAt(new DateTimeImmutable("now"));
 

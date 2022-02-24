@@ -43,6 +43,11 @@ class Seance
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Salle::class, inversedBy="relation")
+     */
+    private $salle;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +109,18 @@ class Seance
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getSalle(): ?Salle
+    {
+        return $this->salle;
+    }
+
+    public function setSalle(?Salle $salle): self
+    {
+        $this->salle = $salle;
 
         return $this;
     }
