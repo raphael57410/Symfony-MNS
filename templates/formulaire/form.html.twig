@@ -5,20 +5,28 @@
 {% endblock %}
 
 {% block body %}
-	{% apply inline_css(source("styles/form.css"), source("styles/global.css")) %}
-	<div class="form_container">
-		{% if isEditor %}
-			<h1 class="form_title">Changer un film</h1>
-		{% else %}
-			<h1 class="form_title">Ajouter un film</h1>
-		{% endif %}
-		{{form_start(form)}}
+{% apply inline_css(source("styles/form.css"), source("styles/global.css")) %}
+<div class="form_container">
+	{% if isEditor %}
+		<h1 class="form_title">Changer un film</h1>
+	{% else %}
+		<h1 class="form_title">Ajouter un film</h1>
+	{% endif %}
+	{{form_start(form)}}
 
-		{{form_row(form.title, {'label': 'Titre'})}}
+	{{form_row(form.title, {'label': 'Titre'})}}
 
-		{{form_row(form.director,{'label': 'Réalisateur'})}}
+	{{form_row(form.director,{'label': 'Réalisateur'})}}
 
-		{{form_row(form.gender,{'label': 'Genre'})}}
+	{{form_row(form.gender,{'label': 'Genre'})}}
+
+	{{form_row(form.description,{'label': 'Déscription'})}}
+
+	{{form_row(form.image,{'label': 'Lien de l\'image'})}}
+
+	{{form_row(form.status,{'label': 'Status'})}}
+
+	{{form_row(form.duree,{'label': 'Duree (en minutes)'})}}
 
 		{% if isEditor %}
 			<div class="form_button">

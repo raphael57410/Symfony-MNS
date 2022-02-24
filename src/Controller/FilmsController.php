@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Films;
+use Doctrine\DBAL\Types\DateImmutableType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,6 +26,10 @@ class FilmsController extends AbstractController
         $film->setTitle('Spiderman');
         $film->setDirector('Jon Watts');
         $film->setGender('Action');
+        $film->setDescription('Action');
+        $film->setDuree(10);
+        $film->setStatus('encours');
+        $film->setImage('https://ctr.cdnartwhere.eu/sites/demo/files/styles/manual_crop/public/_dent-de-la-mer_0.jpg');
 
         // on prépare la requete
         $entityManager->persist($film);
