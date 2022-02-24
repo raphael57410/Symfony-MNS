@@ -3,16 +3,16 @@
 	<nav class="navBar_container">
 		<ul class="navBar_ul">
 			<li class="navBar_li">
-				<a href="/">Acceuil</a>
+				<a href="{{ path("accueil") }}">Acceuil</a>
 			</li>
 			<li class="navBar_li">
-				<a href="/seance">Liste des séances</a>
+				<a href="{{ path("seance_index") }}">Liste des séances</a>
 			</li>
 			<li class="navBar_li">
-				<a href="/readFilm">Films</a>
+				<a href="{{ path("read_film") }}">Films</a>
 			</li>
 			<li class="navBar_li">
-				<a href="/salle/new">Ajouter un salle</a>
+				<a href="{{ path("salle_new") }}">Ajouter un salle</a>
 			</li>
 		</ul>
 	</nav>
