@@ -32,28 +32,7 @@
 
 		<ul class="film_ul">
 			{% for film in films %}
-				<li class="film_li">
-					<div class='film_gender {{film.gender}}'>Théme:
-						{{ film.gender }}</div>
-					<h2 class="film_title">
-						<a href="oneFilm/{{film.id}}">{{ film.title }}</a>
-						<img class="film_img" src={{film.image}} alt="">
-					</h2>
-
-
-					<div>{{ film.director }}</div>
-					<div class="button_container">
-						<button class="button delete">
-							<a href="deleteFilm/{{film.id}}">Supprimer</a>
-						</button>
-						<button class="button update">
-							<a href="updateFilm/{{film.id}}">update</a>
-						</button>
-						<button class="button oneFilm">
-							<a href="oneFilm/{{film.id}}">Description</a>
-						</button>
-					</div>
-				</li>
+				{% include "films/filmCard.html.twig" %}
 			{% endfor %}
 		</ul>
 		<button class="create_button">

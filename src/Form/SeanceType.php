@@ -3,8 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Films;
+use App\Entity\Salle;
 use App\Entity\Seance;
-use DateTimeImmutable;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -23,6 +23,13 @@ class SeanceType extends AbstractType
                 [
                     "class" => Films::class,
                     "choice_label" => "title"
+                ]
+            )->add(
+                "Salle",
+                EntityType::class,
+                [
+                    "class" => Salle::class,
+                    "choice_label" => "numero"
                 ]
             );
     }

@@ -2,17 +2,26 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Salle;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class NavigationController extends AbstractController
 {
     /**
      * @Route("/", name="accueil")
      */
-    function home()
+    function home(ManagerRegistry $doctrine)
     {
-        return $this->render('accueil/accueil.html.twig');
+        $allSalles = $doctrine->getManager()->getRepository(Salle::class)->findAll();
+
+        return $this->render(
+            'accueil/accueil.html.twig',
+            [
+                'salles' => $allSalles
+            ]
+        );
     }
 
     /**

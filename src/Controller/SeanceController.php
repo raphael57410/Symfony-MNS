@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use DateTime;
+use App\Entity\Salle;
 use App\Entity\Seance;
 use DateTimeImmutable;
 use App\Form\SeanceType;
@@ -25,6 +26,20 @@ class SeanceController extends AbstractController
     {
         return $this->render('seance/index.html.twig', [
             'seances' => $seanceRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/listSeance/{id}", name="seance_list", methods={"GET"})
+     */
+    public function listSeance(SeanceRepository $seanceRepository, Salle $salle): Response
+    {
+
+        $list = $seanceRepository->findBy(['salle' => $salle]);
+
+        return $this->render('seance/seanceList.html.twig', [
+            'seances' => $seanceRepository->findAll(),
+            'list' => $list,
         ]);
     }
 

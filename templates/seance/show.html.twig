@@ -1,38 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Seance{% endblock %}
+{% block title %}Seance
+{% endblock %}
 
 {% block body %}
-    <h1>Seance</h1>
+	<h1>{{ seance.film.title }}</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ seance.id }}</td>
-            </tr>
-            <tr>
-                <th>DateDebut</th>
-                <td>{{ seance.dateDebut ? seance.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Language</th>
-                <td>{{ seance.language }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ seance.createdAt ? seance.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ seance.updatedAt ? seance.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ seance.id }}</td>
+			</tr>
+			<tr>
+				<th>DateDebut</th>
+				<td>{{ seance.dateDebut ? seance.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Language</th>
+				<td>{{ seance.language }}</td>
+			</tr>
+			<tr>
+				<th>CreatedAt</th>
+				<td>{{ seance.createdAt ? seance.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
+			<tr>
+				<th>UpdatedAt</th>
+				<td>{{ seance.updatedAt ? seance.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
+		</tbody>
+	</table>
 
-    <a href="{{ path('seance_index') }}">back to list</a>
+	<a href="{{ path('seance_index') }}">back to list</a>
 
-    <a href="{{ path('seance_edit', {'id': seance.id}) }}">edit</a>
+	<a href="{{ path('seance_edit', {'id': seance.id}) }}">edit</a>
 
-    {{ include('seance/_delete_form.html.twig') }}
+	{{ include('seance/_delete_form.html.twig') }}
 {% endblock %}

@@ -1,0 +1,37 @@
+.salle_container {
+    display: flex;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid black;
+}
+
+.salle_card {
+    border: 1px solid red;
+    margin: 10px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.status {
+    border-radius: 15px;
+    margin: 5px;
+    padding: 5px;
+    color: white;
+}
+
+.salle_card.disable {
+    background: grey;
+}
+
+.open {
+    background: green;
+}
+
+.close {
+    background: red;
+}
+
+a {
+    cursor: pointer;
+}

@@ -13,7 +13,7 @@ class SalleType extends AbstractType
     {
         $builder
             ->add('numero')
-        ;
+            ->add('status');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

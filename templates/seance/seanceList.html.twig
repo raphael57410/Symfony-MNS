@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Seance
+{% endblock %}
+
+{% block body %}
+	{% for seance in list %}
+		{% apply inline_css(source("styles/films.css"), source("styles/global.css")) %}
+		<li class="film_li">
+			<div class='film_gender {{seance.film.gender}}'>Théme:
+				{{ seance.film.gender }}</div>
+			<h2 class="film_title">
+				<a href="oneFilm/{{seance.film.id}}">{{ seance.film.title }}</a>
+				<img class="film_img" src={{seance.film.image}} alt="">
+			</h2>
+
+
+			<div>{{ seance.film.director }}</div>
+			<div class="button_container">
+				<button class="button delete">
+					<a href="{{path('delete_film', {'id': seance.film.id}) }}">Supprimer</a>
+				</button>
+				<button class="button update">
+					<a href="{{path('update_film', {'id': seance.film.id}) }}">update</a>
+				</button>
+				<button class="button oneFilm">
+					<a href="{{path('one_film', {'id': seance.film.id}) }}">Description</a>
+				</button>
+			</div>
+		</li>
+		{% endapply %}
+	{% endfor %}
+{% endblock %}

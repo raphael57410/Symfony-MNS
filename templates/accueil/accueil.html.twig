@@ -7,7 +7,25 @@
 {% block body %}
 	{% apply inline_css(source("styles/accueil.css"),source("styles/global.css")) %}
 	<div>
-		<h1 class="title">Accueil</h1>
+		<h1 class="title">Voici les salles de notre cinéma</h1>
+		<div class="salle_container">
+			{% for salle in salles %}
+				<div class="salle_card {{salle.status == 0 ? " disable" : " " }}">
+					<h2 class="salle_title">
+						salle numéro:
+						{{ salle.numero }}
+					</h2>
+					{% if salle.status == 1 %}
+						<a href="{{ path("seance_list", {'id' : salle.id}) }}">
+							<div class="status open">Disponible</div>
+						</a>
+					{% else %}
+						<div class="status close">
+							Non disponible</div>
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
 	</div>
 	{% endapply %}
 {% endblock %}
