@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Films;
 use App\Entity\Seance;
+use DateTimeImmutable;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -16,8 +17,6 @@ class SeanceType extends AbstractType
         $builder
             ->add('dateDebut')
             ->add('language')
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add(
                 'film',
                 EntityType::class,

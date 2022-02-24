@@ -26,6 +26,13 @@
     padding: 0;
 }
 
+.form_container > form > div > select {
+    padding: 0;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #1A2980;
+}
+
 .form_container input {
     width: 100%;
     border-radius: 5px;
