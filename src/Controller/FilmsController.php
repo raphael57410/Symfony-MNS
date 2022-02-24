@@ -4,15 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Films;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\ButtonType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Doctrine\ORM\EntityManagerInterface;
 
 class FilmsController extends AbstractController
 {
@@ -21,7 +15,7 @@ class FilmsController extends AbstractController
      */
     public function createFilm(ManagerRegistry $doctrine): Response
     {
-        // on utilise ManagerRegistry pour interargire avec la base de données
+        // on utilise ManagerRegistry pour intérargire avec la base de données
         $entityManager = $doctrine->getManager();
 
         // on crée une nouvelle instance de Films
@@ -49,42 +43,56 @@ class FilmsController extends AbstractController
         // tableau des genres 
         $genre = [];
 
-        // tableau des films trié
-        $sortFilms = [];
-
-        // Variable qui nous sert a savoir si il y'a eu un trie des films
+        // Variable qui nous sert à savoir si il y'a eu un trie des films
         $sort = false;
 
         // Nombre de film
         $filmNumber = 0;
 
+        if (!empty($_POST['gender'])) {
 
+            // on récupére les films par genre
+            $allFilms = $doctrine->getManager()->getRepository(Films::class)->findBy(["gender" => $_POST['gender']]);
 
-        // on récupére tout les films de la base de données
-        $allFilms = $doctrine->getManager()->getRepository(Films::class)->findAll();
+            // on passe a true la variable sort pour dire que les films sont trié
+            $sort = true;
+        } else {
 
-        // Condition pour trier les films par genre
-        if (!empty($_POST)) {
-            foreach ($allFilms as $film) {
-                if ($film->getGender() == $_POST['gender']) {
-                    array_push($sortFilms, $film);
-                    $sort = true;
-                }
-            }
-
-            // Si le tableau n'est pas vide on change valeur de 
-            // tous les films avec la nouvelle valeur des films trié
-            if (!empty($sortFilms)) {
-                $allFilms = $sortFilms;
-            }
+            // on récupére touts les films de la base de données
+            $allFilms = $doctrine->getManager()->getRepository(Films::class)->findAll();
         }
 
+
+
+
+        // ### Ancienne condition pour trier ###
+
+        // Condition pour trier les films par genre
+        // if (!empty($_POST)) {
+        //     foreach ($allFilms as $film) {
+        //         if ($film->getGender() == $_POST['gender']) {
+        //             array_push($sortFilms, $film);
+        //             $sort = true;
+        //         }
+        //     }
+
+        // Si le tableau n'est pas vide on change la valeur de 
+        // tous les films avec la nouvelle valeur des films trié
+        //     if (!empty($sortFilms)) {
+        //         $allFilms = $sortFilms;
+        //     }
+        // }
+        // ###
+
+        // boucle pour récuperer les genres des films pour
+        // pouvoir l'afficher au front
         foreach ($allFilms as $film) {
             if (!in_array($film->getGender(), $genre)) {
                 array_push($genre, $film->getGender());
             }
         }
 
+        // Nombre de films au total
         $filmNumber = count($allFilms);
 
 
