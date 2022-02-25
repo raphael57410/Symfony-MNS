@@ -10,10 +10,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class NavigationController extends AbstractController
 {
     /**
-     * @Route("/", name="accueil")
+     * @Route("/readSalle", name="read_salle")
      */
     function home(ManagerRegistry $doctrine)
     {
+
         $allSalles = $doctrine->getManager()->getRepository(Salle::class)->findAll();
 
         return $this->render(

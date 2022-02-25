@@ -23,8 +23,13 @@ class FilmType extends AbstractType
                 'choices' => [
                     '
                     genre des films disponible' => [
-                        'Horreur' => 'Horreur',
-                        'Comédie' => 'Comédie',
+                        'Horreur'     => 'Horreur',
+                        'Comédie'     => 'Comédie',
+                        'Drame'       => 'Drame',
+                        'Fantastique' => 'Fantastique',
+                        'Action'      => 'Action',
+
+
                     ]
                 ]
             ])

@@ -2,7 +2,7 @@
 	<div class='film_gender {{film.gender}}'>Théme:
 		{{ film.gender }}</div>
 	<h2 class="film_title">
-		<a href="oneFilm/{{film.id}}">{{ film.title }}</a>
+		<a href="{{path('one_film', {'id': film.id}) }}">{{ film.title }}</a>
 		<img class="film_img" src={{film.image}} alt="">
 	</h2>
 
@@ -10,13 +10,13 @@
 	<div>{{ film.director }}</div>
 	<div class="button_container">
 		<button class="button delete">
-			<a href="deleteFilm/{{film.id}}">Supprimer</a>
+			<a href="{{path('delete_film', {'id': film.id}) }}">Supprimer</a>
 		</button>
 		<button class="button update">
-			<a href="updateFilm/{{film.id}}">update</a>
+			<a href="{{path('update_film', {'id': film.id}) }}">update</a>
 		</button>
 		<button class="button oneFilm">
-			<a href="oneFilm/{{film.id}}">Description</a>
+			<a href="{{path('one_film', {'id': film.id}) }}">Description</a>
 		</button>
 	</div>
 </li>

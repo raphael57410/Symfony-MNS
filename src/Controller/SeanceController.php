@@ -34,7 +34,6 @@ class SeanceController extends AbstractController
      */
     public function listSeance(SeanceRepository $seanceRepository, Salle $salle): Response
     {
-
         $list = $seanceRepository->findBy(['salle' => $salle]);
 
         return $this->render('seance/seanceList.html.twig', [

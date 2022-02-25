@@ -76,7 +76,7 @@ class FormController extends AbstractController
             $entityManager->flush();
 
             // redirection vers la listes des films
-            return $this->redirectToRoute('read_film');
+            return $this->redirectToRoute('accueil');
         }
 
         return $this->render('formulaire/form.html.twig', [

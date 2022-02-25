@@ -6,11 +6,20 @@
 
 {% block body %}
 	{% apply inline_css(source("styles/form.css"), source("styles/global.css")) %}
-	<h1>Description du film</h1>
-
-	<div>{{ film.title }}</div>
-	<div>{{ film.gender }}</div>
-	<div>{{ film.director }}</div>
-	<div>{{ film.description }}</div>
+	<div class="d-flex flex-column flex-wrap justify-content-center align-items-center">
+		<h1 class="w-100 p-3 text-center">Description du film</h1>
+		<div class="d-flex flex-column">
+			{% if salle %}
+				<div class="m-5">Salle N°{{ salle[0].numero }}</div>
+			{% endif %}
+		</div>
+		<div class="card" style="width: 18rem;">
+			<img src={{film.image}} class="card-img-top" alt="banniere">
+			<h5 class="card-title">{{ film.title }}</h5>
+			<div>{{ film.gender }}</div>
+			<h6 class="card-subtitle mb-2 text-muted">{{ film.director }}</h6>
+			<p class="card-text">{{ film.description }}</p>
+		</div>
+	</div>
 	{% endapply %}
 {% endblock %}

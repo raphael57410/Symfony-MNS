@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+
 }
 
 .title_container{
@@ -21,7 +22,7 @@ justify-content: center;
     height: 50%;
     width: 55%;
     padding: 10px;
-    margin: 10px;
+    margin: 20px;
 }
 
 .film_img {
@@ -30,7 +31,18 @@ justify-content: center;
     border-radius: 10px;
 }
 
+.film_status{
+    position: absolute;
+    background: darkgoldenrod;
+    color: white;
+    border-radius: 10px;
+    left: 0;
+    bottom: -22px;
+    padding: 5px;
+}
+
 .film_li {
+    position: relative;
     text-align: center;
     flex-direction: column;
     display: flex;
@@ -111,6 +123,14 @@ justify-content: center;
     background: lightgreen;
 }
 
+.film_gender.Drame {
+    background: lightsalmon;
+}
+
+.film_gender.Fantastique {
+    background: lightseagreen;
+}
+
 .create_button {
     width: 200px;
     height: 30px;
@@ -123,4 +143,9 @@ justify-content: center;
     background: #1A2980;
     background: -webkit-linear-gradient(to right, #26D0CE, #1A2980);
     background: linear-gradient(to right, #26D0CE, #1A2980);   
+}
+
+.seance_list_container{
+    display: flex;
+    justify-content: center;
 }

@@ -3,11 +3,10 @@
     justify-content: center;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border: 1px solid black;
 }
 
 .salle_card {
-    border: 1px solid red;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     margin: 10px;
     border-radius: 15px;
     text-align: center;
@@ -30,6 +29,7 @@
 
 .close {
     background: red;
+    width: 100%;
 }
 
 a {

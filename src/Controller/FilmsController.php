@@ -3,6 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Films;
+use App\Entity\Salle;
+use App\Entity\Seance;
+use App\Repository\SalleRepository;
+use App\Repository\SeanceRepository;
 use Doctrine\DBAL\Types\DateImmutableType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,7 +44,7 @@ class FilmsController extends AbstractController
     }
 
     /**
-     * @Route("/readFilm", name="read_film")
+     * @Route("/", name="accueil")
      * @Route("/sortFilms", name="sort_films")
      */
     public function readFilm(ManagerRegistry $doctrine): Response
@@ -137,15 +141,26 @@ class FilmsController extends AbstractController
     /**
      * @Route("/oneFilm/{id}", name="one_film")
      */
-    public function oneFilm(Films $film = null, ManagerRegistry $doctrine, $id): Response
+    public function oneFilm(Films $film = null, Seance $seance, SeanceRepository $seanceRepository, SalleRepository $salleRepository): Response
     {
-        $entityManager = $doctrine->getManager();
-        $film = $entityManager->getRepository(Films::class)->find($id);
+
+        // on recupére l'id de la séance 
+        $idFilm = $film->getId();
+
+        $currentSeance = $seanceRepository->findBy(["film" => $idFilm]);
+
+        if (!empty($currentSeance)) {
+            # code...
+            $salle = $salleRepository->findBy(["id" => $currentSeance[0]->getSalle()->getId()]);
+        } else {
+            $salle = null;
+        }
 
         return $this->render(
             'films/oneFilm.html.twig',
             [
                 "film" => $film,
+                "salle" => $salle
             ]
         );
     }

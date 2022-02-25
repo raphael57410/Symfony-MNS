@@ -23,6 +23,9 @@
 						<div class="status close">
 							Non disponible</div>
 					{% endif %}
+					<div class="btn btn-primary m-1">
+						<a href="{{ path("salle_edit", {'id' : salle.id}) }}">ouvrir ou fermer un salle</a>
+					</div>
 				</div>
 			{% endfor %}
 		</div>
