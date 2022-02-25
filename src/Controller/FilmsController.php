@@ -45,7 +45,7 @@ class FilmsController extends AbstractController
      * @Route("/", name="accueil")
      * @Route("/sortFilms", name="sort_films")
      */
-    public function readFilm(FilmsRepository $filmsRepository): Response
+    public function readFilm(FilmsRepository $filmsRepository, SeanceRepository $seanceRepository): Response
     {
         // tableau des genres 
         $genre = [];
@@ -113,6 +113,7 @@ class FilmsController extends AbstractController
                 "genres" => $genre,
                 "filmNumber" => $filmNumber,
                 "sort" => $sort,
+                "seances" => $seanceRepository->findAll()
             ]
         );
     }

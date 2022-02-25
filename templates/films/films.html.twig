@@ -31,7 +31,11 @@
 		{% endif %}
 		<ul class="film_ul">
 			{% for film in films %}
-				{% include "films/filmcard.html.twig" %}
+				{% for seance in seances %}
+					{% if seance.id == film.id %}
+						{% include "films/filmcard.html.twig" %}
+					{% endif %}
+				{% endfor %}
 			{% endfor %}
 		</ul>
 		<button class="create_button">
