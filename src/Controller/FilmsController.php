@@ -141,16 +141,16 @@ class FilmsController extends AbstractController
     /**
      * @Route("/oneFilm/{id}", name="one_film")
      */
-    public function oneFilm(Films $film = null, Seance $seance, SeanceRepository $seanceRepository, SalleRepository $salleRepository): Response
+    public function oneFilm(Films $film = null, SeanceRepository $seanceRepository, SalleRepository $salleRepository): Response
     {
 
-        // on recupére l'id de la séance 
+        // on recupére l'id du film 
         $idFilm = $film->getId();
 
+        // on récupère la séance
         $currentSeance = $seanceRepository->findBy(["film" => $idFilm]);
 
         if (!empty($currentSeance)) {
-            # code...
             $salle = $salleRepository->findBy(["id" => $currentSeance[0]->getSalle()->getId()]);
         } else {
             $salle = null;

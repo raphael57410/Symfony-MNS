@@ -11,6 +11,7 @@
 				<tr>
 					<th>Id</th>
 					<th>DateDebut</th>
+					<th>Film</th>
 					<th>Language</th>
 					<th>CreatedAt</th>
 					<th>UpdatedAt</th>
@@ -22,6 +23,8 @@
 					<tr>
 						<td>{{ seance.id }}</td>
 						<td>{{ seance.dateDebut ? seance.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+						<td>{{ seance.getFilm().getTitle() }}</td>
+
 						<td>{{ seance.language }}</td>
 						<td>{{ seance.createdAt ? seance.createdAt|date('Y-m-d H:i:s') : '' }}</td>
 						<td>{{ seance.updatedAt ? seance.updatedAt|date('Y-m-d H:i:s') : '' }}</td>

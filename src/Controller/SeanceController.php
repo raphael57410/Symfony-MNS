@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use DateTime;
+use App\Entity\Films;
 use App\Entity\Salle;
 use App\Entity\Seance;
 use DateTimeImmutable;
 use App\Form\SeanceType;
+use App\Repository\FilmsRepository;
 use App\Repository\SeanceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,8 +24,9 @@ class SeanceController extends AbstractController
     /**
      * @Route("/", name="seance_index", methods={"GET"})
      */
-    public function index(SeanceRepository $seanceRepository): Response
+    public function index(SeanceRepository $seanceRepository, FilmsRepository $filmsRepository): Response
     {
+
         return $this->render('seance/index.html.twig', [
             'seances' => $seanceRepository->findAll(),
         ]);

@@ -12,6 +12,9 @@
 			{% if salle %}
 				<div class="m-5">Salle N°{{ salle[0].numero }}</div>
 			{% endif %}
+			{% if salle == null %}
+				<div class="m-5">Pas de salle disponible</div>
+			{% endif %}
 		</div>
 		<div class="card" style="width: 18rem;">
 			<img src={{film.image}} class="card-img-top" alt="banniere">
