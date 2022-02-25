@@ -29,7 +29,6 @@
 		{% if films|length == 0 %}
 			Pas de film disponnible
 		{% endif %}
-
 		<ul class="film_ul">
 			{% for film in films %}
 				{% include "films/filmcard.html.twig" %}

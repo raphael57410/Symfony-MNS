@@ -21,14 +21,14 @@ class SeanceType extends AbstractType
                 'film',
                 EntityType::class,
                 [
-                    "class" => Films::class,
+                    "class"        => Films::class,
                     "choice_label" => "title"
                 ]
             )->add(
                 "Salle",
                 EntityType::class,
                 [
-                    "class" => Salle::class,
+                    "class"        => Salle::class,
                     "choice_label" => "numero"
                 ]
             );

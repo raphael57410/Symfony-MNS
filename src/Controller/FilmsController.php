@@ -3,11 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Films;
-use App\Entity\Salle;
-use App\Entity\Seance;
+use App\Repository\FilmsRepository;
 use App\Repository\SalleRepository;
 use App\Repository\SeanceRepository;
-use Doctrine\DBAL\Types\DateImmutableType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -47,7 +45,7 @@ class FilmsController extends AbstractController
      * @Route("/", name="accueil")
      * @Route("/sortFilms", name="sort_films")
      */
-    public function readFilm(ManagerRegistry $doctrine): Response
+    public function readFilm(FilmsRepository $filmsRepository): Response
     {
         // tableau des genres 
         $genre = [];
@@ -58,17 +56,20 @@ class FilmsController extends AbstractController
         // Nombre de film
         $filmNumber = 0;
 
+
+
+
         if (!empty($_POST['gender'])) {
 
             // on récupére les films par genre
-            $allFilms = $doctrine->getManager()->getRepository(Films::class)->findBy(["gender" => $_POST['gender']]);
+            $allFilms = $filmsRepository->findBy(["gender" => $_POST['gender']]);
 
             // on passe a true la variable sort pour dire que les films sont trié
             $sort = true;
         } else {
 
             // on récupére touts les films de la base de données
-            $allFilms = $doctrine->getManager()->getRepository(Films::class)->findAll();
+            $allFilms = $filmsRepository->findAll();
         }
 
 
@@ -104,7 +105,6 @@ class FilmsController extends AbstractController
         // Nombre de films au total
         $filmNumber = count($allFilms);
 
-
         // on envoie la vue les données de notre base
         return $this->render(
             'films/films.html.twig',
@@ -112,7 +112,7 @@ class FilmsController extends AbstractController
                 "films" => $allFilms,
                 "genres" => $genre,
                 "filmNumber" => $filmNumber,
-                "sort" => $sort
+                "sort" => $sort,
             ]
         );
     }
@@ -159,8 +159,8 @@ class FilmsController extends AbstractController
         return $this->render(
             'films/oneFilm.html.twig',
             [
-                "film" => $film,
-                "salle" => $salle
+                "film"  => $film,
+                "salle"  => $salle,
             ]
         );
     }

@@ -7,8 +7,6 @@ use App\Form\FilmType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -23,6 +21,8 @@ class FormController extends AbstractController
     function formulaire(Films $film = null, ManagerRegistry $doctrine, Request $request, ValidatorInterface $validator)
     {
         !$entityManager = $doctrine->getManager();
+
+        // variable de l'ancienne condition
         $isEditor = false;
 
         if (!$film) {
