@@ -9,6 +9,7 @@
 
 
 	<div>{{ film.director }}</div>
+	{{ seance.getDateDebut()|format_datetime(locale='fr')}}
 	<div class="button_container">
 		<button class="button delete">
 			<a href="{{path('delete_film', {'id': film.id}) }}">Supprimer</a>
